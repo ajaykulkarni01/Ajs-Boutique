@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
-import { idbPromise } from '../utils/helpers';
+import { useQuery } from '@apollo/client';
+
 import Cart from '../components/Cart';
-import { useSelector, useDispatch } from 'react-redux';
+import { useStoreContext } from '../utils/GlobalState';
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
@@ -11,16 +11,15 @@ import {
   UPDATE_PRODUCTS,
 } from '../utils/actions';
 import { QUERY_PRODUCTS } from '../utils/queries';
+import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 
 function Detail() {
-  const state = useSelector((state) => {
-    return state;
-  });
+  const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
   const [currentProduct, setCurrentProduct] = useState({});
-  const dispatch = useDispatch();
+
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const { products, cart } = state;
@@ -60,7 +59,6 @@ function Detail() {
         _id: id,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
       });
-      // if we're updating quantity, use existing item data and increment purchaseQuantity value by one
       idbPromise('cart', 'put', {
         ...itemInCart,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
@@ -70,7 +68,6 @@ function Detail() {
         type: ADD_TO_CART,
         product: { ...currentProduct, purchaseQuantity: 1 },
       });
-      // if product isn't in the cart yet, add it to the current shopping cart in IndexedDB
       idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
     }
   };
@@ -81,7 +78,6 @@ function Detail() {
       _id: currentProduct._id,
     });
 
-    // upon removal from cart, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
     idbPromise('cart', 'delete', { ...currentProduct });
   };
 
