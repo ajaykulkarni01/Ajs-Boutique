@@ -1,5 +1,5 @@
 {
-  "name": "MERN-comm store",
+  "name": "mern-comm-store",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -13,7 +13,16 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
+    "if-env": "^1.0.4",
+    "mern-client": "file:client",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "stripe": "^8.131.1"
+  },
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "redux-devtools": "^3.7.0"
   }
 }

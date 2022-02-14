@@ -4,6 +4,7 @@ const path = require('path');
 require('dotenv').config()
 
 const { typeDefs, resolvers } = require('./schemas');
+const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
@@ -12,6 +13,7 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: authMiddleware,
   // These two lines below enable the playground when deployed to heroku. You can remove them if you don't want this functionality
   introspection: true,
   playground: true,
@@ -21,6 +23,9 @@ server.applyMiddleware({ app });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// Serve up static assets
+app.use('/images', express.static(path.join(__dirname, '../client/images')));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
