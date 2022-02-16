@@ -7,50 +7,45 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
-            </Link>
-          </li>
-          <li className="mx-1">
+        <div>
+          <div>
+            <Link className="btn btn-lg btn-light m-2" to="/orderHistory">Order History</Link>
+          </div>
+          <div className="btn btn-lg btn-light m-2">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
-          </li>
-        </ul>
+          </div>
+        </div>
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
+        <div>
+          <div>
+            <Link className="btn btn-lg btn-light m-2" to="/signup">Signup</Link>
+          </div>
+          <div>
+            <Link className="btn btn-lg btn-light m-2" to="/login">Login</Link>
+          </div>
+        </div>
       );
     }
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
-          -Shop-Shop
-        </Link>
-      </h1>
-
-      <nav>
-        {showNavigation()}
-      </nav>
+    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
+      <div className="container flex-row justify-space-between-lg justify-center align-center">
+        <div>
+          <Link className="text-light" to="/">
+              <h1 className="m-0">Project Name</h1>
+            </Link>
+            <p className="m-0">This is a sub-title</p>
+        </div>
+        <nav>
+          {showNavigation()}
+        </nav>
+      </div>
     </header>
   );
 }
