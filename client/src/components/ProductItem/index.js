@@ -5,6 +5,8 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
+import { Col, Button, Card } from 'react-bootstrap';
+
 function ProductItem(item) {
   const [state, dispatch] = useStoreContext();
 
@@ -40,27 +42,30 @@ function ProductItem(item) {
   }
 
   return (
-    <div className="row row-cols-1 row-cols-md-3 g-4">
-      <div className="col">
-        <div className="card h-100">
-          <Link to={`/products/${_id}`}>
+   
+    <Col>
+      <Card>
+      <Link to={`/products/${_id}`}>
             <img className="card-img-top"
               alt={name}
               src={`/images/${image}`}
             />
           </Link>
-          <div className="card-body">
-            <h5 className="card-title">{name}</h5>
-            <p className="card-text">{quantity} {pluralize("item", quantity)} in stock</p>  
-            <p className="card-text">${price}</p>
-          </div>
-
-          <div className="card-footer">
-            <button onClick={addToCart}>Add to cart</button>
-          </div>
-        </div>  
-      </div>      
-    </div>      
+        {/* <Card.Img variant="top" src={`/images/${image}`} /> */}
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>
+            {quantity} {pluralize("item", quantity)} in stock
+            ${price}
+          </Card.Text>
+        </Card.Body>
+        
+        <Card.Footer>
+          <Button onClick={addToCart}>Add to cart</Button>
+        </Card.Footer>
+      </Card>
+    </Col>
+     
   );
 }
 
