@@ -1,40 +1,24 @@
 import React from "react";
-import Auth from "../../utils/auth";
+import CategoryMenu from "../CategoryMenu";
+// import Header from "../Header";
+// import Auth from "../../utils/auth";
+// import { Link } from "react-router-dom";
 
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
 function NavHeader() {
-  function showNavigation() {
-    if (Auth.loggedIn()) {
-      return (
-        <Nav>
-        <Nav.Link href="/orderHistory">Order History</Nav.Link>
-        <Nav.Link onClick={() => Auth.logout()} href="/" >Logout</Nav.Link>
-      </Nav>
-      
-      );
-    } else {
-      return (
-        <Nav>
-        <Nav.Link href="/login">Login</Nav.Link>
-        <Nav.Link href="/signup">Signup</Nav.Link>
-      </Nav>
-      );
-    }
-  }
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar className="navbar customNav" collapseOnSelect expand="lg" >
     <Container>
-    <Navbar.Brand href="/">MERN-comm</Navbar.Brand>
+    
+    <Navbar.Brand href="/">JOE's Boutique</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
-      <Nav className="me-auto">
-        <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/">About</Nav.Link>
-      </Nav>
-      <Nav>
-        {showNavigation()}
+      <Nav className="center customNavLinks">
+         <CategoryMenu />
+         <Nav.Link href="/">About</Nav.Link>
+         <Nav.Link href="/">Contact</Nav.Link>
       </Nav>
     </Navbar.Collapse>
     </Container>

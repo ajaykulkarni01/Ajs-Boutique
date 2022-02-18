@@ -13,6 +13,7 @@ import Detail from './pages/Detail';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Header from './components/Header';
 import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
 import { StoreProvider } from './utils/GlobalState';
@@ -22,6 +23,8 @@ import OrderHistory from './pages/OrderHistory';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -48,7 +51,9 @@ function App() {
       <Router>
         
           <StoreProvider>
+            <Header />
             <NavHeader />
+            
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />

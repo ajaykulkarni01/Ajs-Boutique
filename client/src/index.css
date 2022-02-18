@@ -1,14 +1,53 @@
-/* :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
+ :root {
+  --primary: #e1d8d8;
+  --secondary: #8c5b10;
   --tertiary: #B12704;
-  --light: #fafafa;
-  --dark: #272f32;
+  --light: #f3f0f0;
+  --dark: #353433;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
 }
 
+.customTopNav{
+  background-color: var(--light) !important;
+}
+.customNav{
+  background-color: var(--primary) !important;
+}
+
+.nav-link{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500 !important;
+  color: var(--dark) !important;
+}
+.navbar-brand{
+  font-size: 30px !important;
+  font-family: 'Bebas Neue', cursive !important;
+  color: var(--secondary) !important;
+}
+
+/* .nav-link.active {
+  font-family: 'Bebas Neue', cursive;
+  background-color: chartreuse !important;  
+} */
+
+
+/* .nav-link{
+  font-family: 'Roboto', sans-serif;
+  color: #4e0027 !important;
+} */
+/* .navbar-toggler {
+
+  border-color: var(--primary)!important;
+}
+
+.navbar-toggler-icon {
+  color: var(--primary)!important;
+} */
+
+
+/*
 * {
   box-sizing: border-box;
 }
