@@ -15,7 +15,7 @@ function NavHeader() {
     <Navbar.Brand href="/">JOE's Boutique</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
-      <Nav className="center customNavLinks">
+      <Nav className="justify-content-center customNavLinks" >
          <CategoryMenu />
          <Nav.Link href="/">About</Nav.Link>
          <Nav.Link href="/">Contact</Nav.Link>
