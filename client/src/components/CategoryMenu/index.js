@@ -45,8 +45,8 @@ function CategoryMenu() {
 
   return (
     <Nav>
-      {categories.map((item) => (
-        <Nav.Item className="nav-link" key={item.name}>
+      {categories.map((item, i) => (
+        <Nav.Item className="nav-link" key={i}>
           <Link to={`/products/${item.name}`}>{item.name}</Link>
         </Nav.Item>
       ))}
