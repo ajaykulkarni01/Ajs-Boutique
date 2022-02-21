@@ -3,12 +3,7 @@ import React from "react";
 
 import { Container, Row, Col, } from "react-bootstrap";
 
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faEnvelope,
-//   faPhone,
-//   faMapMarker,
-// } from "@fortawesome/free-solid-svg-icons";
+
 
 function About() {
   
