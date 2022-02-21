@@ -12,13 +12,13 @@ function NavHeader() {
     <Navbar className="navbar customNav" collapseOnSelect expand="lg" >
     <Container>
     
-    <Navbar.Brand href="/">JOE's Boutique</Navbar.Brand>
+    <Navbar.Brand href="/">AJ's - Boutique</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="justify-content-center customNavLinks" >
           <CategoryMenu />
-         <Nav.Link href="/">About</Nav.Link>
-         <Nav.Link href="/contact">Contact</Nav.Link>
+         <Nav.Link href="/about">About us</Nav.Link>
+         <Nav.Link href="/contact">Contact us</Nav.Link>
       </Nav>
     </Navbar.Collapse>
     </Container>

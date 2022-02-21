@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import spinner from "../../assets/spinner.gif";
-import { Row } from 'react-bootstrap';
+import { Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
 function ProductList() {
@@ -49,13 +49,13 @@ function ProductList() {
   console.log(state.products);
   console.log(category);
   return (
-    <div className="my-2">
-      <div>
+    <Container>
+      <div className="titleBg mt-5 mb-5">
         <h2>{category}</h2>
       </div>
 
       {state.products.length ? (
-          <Row xs={1} md={4} className="g-4">
+        <Row xs={1} md={4} className="g-4">
           {filteredProducts.map((product) => (
             <ProductItem
               key={product._id}
@@ -71,7 +71,7 @@ function ProductList() {
         <h3>You haven't added any products yet!</h3>
       )}
       {loading ? <img src={spinner} alt="loading" /> : null}
-    </div>
+    </Container>
   );
 }
 

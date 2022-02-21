@@ -56,7 +56,7 @@ function ProductItem(item) {
           <Card.Title>{name}</Card.Title>
           <Card.Text>
             {quantity} {pluralize("item", quantity)} in stock
-            ${price}
+            <b> ${price}</b>
           </Card.Text>
         </Card.Body>
         

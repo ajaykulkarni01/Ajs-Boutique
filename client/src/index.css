@@ -1,7 +1,7 @@
- :root {
+:root {
   --primary: #e1d8d8;
-  --secondary: #8c5b10;
-  --tertiary: #B12704;
+  --secondary: rgb(140, 91, 16);
+  --tertiary: #fff0f0;
   --light: #f3f0f0;
   --dark: #353433;
   --btnColor: #ab7640;
@@ -10,42 +10,80 @@
   --spacing-two: calc(1rem);
 }
 
-.customTopNav{
+.customTopNav {
   background-color: #fff !important;
 }
-.customNav{
+.customNav {
   background-color: var(--primary) !important;
 }
-.customTopNavCss{
+.customTopNavCss {
   margin-top: 10px;
-
 }
-.nav-link{
-  font-family: 'Roboto', sans-serif;
+.nav-link {
+  font-family: "Roboto", sans-serif;
   font-weight: 500 !important;
   text-decoration: none !important;
   color: var(--dark) !important;
 }
-.navbar-brand{
+
+.nav-link a,
+.navbar-nav .nav-link,
+.nav-link {
+  text-decoration: none !important;
+  color: var(--dark) !important;
+}
+
+.nav-link a:hover,
+.navbar-nav .nav-link:hover,
+.nav-link:hover {
+  color: var(--btnColor) !important;
+}
+
+.nav-link a:focus,
+.navbar-nav .nav-link:focus,
+.nav-link:focus {
+  color: var(--btnColor) !important;
+}
+
+.navbar-brand {
   font-size: 30px !important;
-  font-family: 'Bebas Neue', cursive !important;
+  font-family: "Bebas Neue", cursive !important;
   color: var(--secondary) !important;
 }
 
-.button-class{
+.home-product-title{
+  
+  font-family: "Roboto", sans-serif;
+  font-weight: 500 !important;
+  text-align: center;
+  text-decoration: none !important;
+  color: var(--secondary) !important;
+}
+
+.titleBg{
+  
+  font-family: "Roboto", sans-serif;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  color: var(--secondary) !important;
+}
+/* .titleBg{  
+  background-color: var(--tertiary);
+} */
+.button-class {
   background-color: var(--btnColor) !important;
   border: 0px !important;
 }
 
-.text-color{
+.text-color {
   color: var(--btnColor) !important;
 }
 
-.page-footer{
+.page-footer {
   background-color: var(--primary) !important;
 }
 
-.footer-copyright{
+.footer-copyright {
   background-color: #fff !important;
 }
 
@@ -58,23 +96,19 @@
   object-fit: cover;
 }
 
-.orderHistoryimg{
-
+.orderHistoryimg {
   width: 100px;
-
 }
 
-.contact-row{
-  background-color: var(--secondary);
-
-
+.contact-row {
+  padding: 30px 0 20px 0;
+  background-color: var(--tertiary);
 }
 
 /* .nav-link.active {
   font-family: 'Bebas Neue', cursive;
   background-color: chartreuse !important;  
 } */
-
 
 /* .nav-link{
   font-family: 'Roboto', sans-serif;
@@ -88,7 +122,6 @@
 .navbar-toggler-icon {
   color: var(--primary)!important;
 } */
-
 
 /*
 * {

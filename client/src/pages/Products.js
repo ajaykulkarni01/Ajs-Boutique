@@ -1,14 +1,14 @@
 // import React, { useState } from "react";
 // import { useStoreContext } from "../utils/GlobalState";
 import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
+// import CategoryMenu from "../components/CategoryMenu";
 // import { useParams } from "react-router-dom";
 // import HomeCarousel from "../components/HomeCarousel";
 // import Cart from "../components/Cart";
 import { Container } from "react-bootstrap";
 // import { UPDATE_CURRENT_CATEGORY } from "../utils/actions";
 
-const Men = () => {
+const Products = () => {
   // const [state] = useStoreContext();
   // const { category } = useParams();
   // const { products } = state;
@@ -22,13 +22,10 @@ const Men = () => {
   //   );
   // }
   return (
-    <div>
-      <Container>
-        {/* <CategoryMenu /> */}
-        <ProductList />
-      </Container>
-    </div>
+    <Container fluid>
+      <ProductList /><br/><br/>
+    </Container>
   );
 };
 
-export default Men;
+export default Products;

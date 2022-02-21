@@ -207,7 +207,7 @@ function Detail() {
                   <div className="d-inline float-left mr-2">
                     <div className="input-group input-group-sm mw-140">
                       <button
-                        className="btn btn-primary text-white"
+                        className="btn btn-primary text-white button-class"
                         type="button"
                       >
                         <FontAwesomeIcon icon={faMinus} />
@@ -218,7 +218,7 @@ function Detail() {
                         defaultValue="1"
                       />
                       <button
-                        className="btn btn-primary text-white"
+                        className="btn btn-primary text-white button-class"
                         type="button"
                       >
                         <FontAwesomeIcon icon={faPlus} />
@@ -227,7 +227,7 @@ function Detail() {
                   </div>
                   <button onClick={addToCart}
                     type="button"
-                    className="btn btn-sm btn-primary mr-2 my-2"
+                    className="btn btn-sm btn-primary mr-2 my-2 button-class"
                     title="Add to cart"
                   >
                     <FontAwesomeIcon icon={faCartPlus} /> Add to cart

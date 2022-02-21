@@ -40,26 +40,26 @@ function Signup(props) {
           <h1 className="mt-5 mb-5 text-left rounded text-color">Signup</h1>
             <form onSubmit={handleFormSubmit}>
 
-                <Form.Group controlId="formBasicFname">
+                <Form.Group>
                   <Form.Label className="mb-2">First Name:</Form.Label>
 
                   <Form.Control className="mb-2" name="firstName" type="firstName" id="firstName" placeholder="First name" onChange={handleChange} />
                 </Form.Group>
 
-                <Form.Group controlId="formBasicLname">
+                <Form.Group>
                   <Form.Label className="mb-2">Last Name:</Form.Label>
 
                   <Form.Control className="mb-2" name="lastName" type="lastName" id="lastName" placeholder="Last name" onChange={handleChange} />
                 </Form.Group>
 
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group>
                   <Form.Label className="mb-2">Email address</Form.Label>
 
                   <Form.Control className="mb-2" name="email" type="email" id="email" placeholder="Enter email" onChange={handleChange} />
                 </Form.Group>
 
                 
-                <Form.Group controlId="formBasicPassword">
+                <Form.Group>
                     <Form.Label className="mb-2">Password</Form.Label>
 
                     <Form.Control className="mb-2" name="password" type="password" id="pwd" placeholder="Password" onChange={handleChange} />
