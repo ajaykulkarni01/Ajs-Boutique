@@ -7,11 +7,12 @@ import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import spinner from "../../assets/spinner.gif";
 import { Row } from 'react-bootstrap';
+import { useParams } from "react-router-dom";
 
 function ProductList() {
   const [state, dispatch] = useStoreContext();
-
-  const { currentCategory } = state;
+  const { category } = useParams();
+  // const { currentCategory } = state;
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
@@ -35,21 +36,22 @@ function ProductList() {
   }, [data, loading, dispatch]);
 
   function filterProducts() {
-    if (!currentCategory || currentCategory === "All") {
+    if (!category || category === "All") {
       return state.products;
     }
 
     return state.products.filter(
-      (product) => product.category._id === currentCategory
+      (product) => product.category.name === category
     );
   }
   const filteredProducts = filterProducts();
   console.log(filteredProducts);
-
+  console.log(state.products);
+  console.log(category);
   return (
     <div className="my-2">
       <div>
-        <h2>Our Products:</h2>
+        <h2>{category}</h2>
       </div>
 
       {state.products.length ? (

@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../../utils/GlobalState';
+import React, { useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { useStoreContext } from "../../utils/GlobalState";
 import {
   UPDATE_CATEGORIES,
   UPDATE_CURRENT_CATEGORY,
-} from '../../utils/actions';
-import { QUERY_CATEGORIES } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
+} from "../../utils/actions";
+import { QUERY_CATEGORIES } from "../../utils/queries";
+import { idbPromise } from "../../utils/helpers";
 import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
@@ -23,10 +24,10 @@ function CategoryMenu() {
         categories: categoryData.categories,
       });
       categoryData.categories.forEach((category) => {
-        idbPromise('categories', 'put', category);
+        idbPromise("categories", "put", category);
       });
     } else if (!loading) {
-      idbPromise('categories', 'get').then((categories) => {
+      idbPromise("categories", "get").then((categories) => {
         dispatch({
           type: UPDATE_CATEGORIES,
           categories: categories,
@@ -43,21 +44,13 @@ function CategoryMenu() {
   };
 
   return (
-    
-      <Nav className="me-auto">
-  
+    <Nav>
       {categories.map((item) => (
-        <Nav.Link 
-          key={item._id}
-          onClick={() => {
-            handleClick(item._id);
-          }}
-        >
-          {item.name}
-        </Nav.Link >
+        <Nav.Item className="nav-link" key={item.name}>
+          <Link to={`/products/${item.name}`}>{item.name}</Link>
+        </Nav.Item>
       ))}
-      </Nav>
-    
+    </Nav>
   );
 }
 

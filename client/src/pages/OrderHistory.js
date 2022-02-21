@@ -1,8 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+// import { Link } from 'react-router-dom';
 
-import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../utils/queries';
+import { useQuery } from "@apollo/client";
+import { QUERY_USER } from "../utils/queries";
+
+import { Container, Table, Row, Col } from "react-bootstrap";
 
 function OrderHistory() {
   const { data } = useQuery(QUERY_USER);
@@ -13,39 +15,61 @@ function OrderHistory() {
   }
 
   return (
-    <>
-      <div className="container my-1">
-        <Link to="/">← Back to Products</Link>
-
-        {user ? (
-          <>
-            <h2>
-              Order History for {user.firstName} {user.lastName}
-            </h2>
-            {user.orders.map((order) => (
-              <div key={order._id} className="my-2">
-                <h3>
-                  {new Date(parseInt(order.purchaseDate)).toLocaleDateString()}
-                </h3>
-                <div className="flex-row">
-                  {order.products.map(({ _id, image, name, price }, index) => (
-                    <div key={index} className="card px-1 py-1">
-                      <Link to={`/products/${_id}`}>
-                        <img alt={name} src={`/images/${image}`} />
-                        <p>{name}</p>
-                      </Link>
-                      <div>
-                        <span>${price}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </>
-        ) : null}
-      </div>
-    </>
+    <Container>
+      <Row className="mt-5 mb-5">
+        
+        <Col>
+        
+      {user ? (
+        <>
+        <p> Hello, {user.firstName} {user.lastName}. Thank you for shopping with us. </p> 
+        <h3>Order History</h3>
+          {user.orders.map((order) => (
+            <div key={order._id}>
+              {order.products.map(
+                ({ _id, image, name, price, description }, index) => (
+                  <div key={index}>
+                    
+                    <Table responsive bordered >
+                      <thead>
+                        <tr>
+                          <th>Order date</th>
+                          <th>Product image</th>
+                          <th>Product name</th>
+                          <th>Product description</th>
+                          <th>Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            {new Date(
+                              parseInt(order.purchaseDate)
+                            ).toLocaleDateString()}
+                          </td>
+                          <td>
+                            <img
+                              className="orderHistoryimg"
+                              alt={name}
+                              src={`/images/${image}`}
+                            />
+                          </td>
+                          <td>{name}</td>
+                          <td>{description}</td>
+                          <td>${price}</td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </div>
+                )
+              )}
+            </div>
+          ))}
+        </>
+      ) : null}
+      </Col>
+      </Row>
+    </Container>
   );
 }
 

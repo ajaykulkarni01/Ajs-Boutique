@@ -10,7 +10,7 @@ function Header() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <Nav className="justify-content-end customTopNav">
+        <Nav className="justify-content-end ">
         <Nav.Link href="/orderHistory">Order History</Nav.Link>
         <Nav.Link onClick={() => Auth.logout()} href="/" >Logout</Nav.Link>
         <Cart />
@@ -19,7 +19,7 @@ function Header() {
       );
     } else {
       return (
-        <Nav className="justify-content-end customTopNav">
+        <Nav className="justify-content-end ">
         <Nav.Link href="/login">Login</Nav.Link>
         <Nav.Link href="/signup">Signup</Nav.Link>
         <Cart />
@@ -29,7 +29,7 @@ function Header() {
   }
 
   return (
-    <Nav className="justify-content-end customTopNav">
+    <Nav className="justify-content-end customTopNavCss">
       {showNavigation()}
     </Nav>
 

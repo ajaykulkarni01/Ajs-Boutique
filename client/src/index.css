@@ -4,27 +4,70 @@
   --tertiary: #B12704;
   --light: #f3f0f0;
   --dark: #353433;
+  --btnColor: #ab7640;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
 }
 
 .customTopNav{
-  background-color: var(--light) !important;
+  background-color: #fff !important;
 }
 .customNav{
   background-color: var(--primary) !important;
 }
+.customTopNavCss{
+  margin-top: 10px;
 
+}
 .nav-link{
   font-family: 'Roboto', sans-serif;
   font-weight: 500 !important;
+  text-decoration: none !important;
   color: var(--dark) !important;
 }
 .navbar-brand{
   font-size: 30px !important;
   font-family: 'Bebas Neue', cursive !important;
   color: var(--secondary) !important;
+}
+
+.button-class{
+  background-color: var(--btnColor) !important;
+  border: 0px !important;
+}
+
+.text-color{
+  color: var(--btnColor) !important;
+}
+
+.page-footer{
+  background-color: var(--primary) !important;
+}
+
+.footer-copyright{
+  background-color: #fff !important;
+}
+
+.login-card-img {
+  border-radius: 0;
+  /* position: absolute; */
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.orderHistoryimg{
+
+  width: 100px;
+
+}
+
+.contact-row{
+  background-color: var(--secondary);
+
+
 }
 
 /* .nav-link.active {

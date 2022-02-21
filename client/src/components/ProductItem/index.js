@@ -45,7 +45,7 @@ function ProductItem(item) {
    
     <Col>
       <Card>
-      <Link to={`/products/${_id}`}>
+      <Link to={`/detail/${_id}`}>
             <img className="card-img-top"
               alt={name}
               src={`/images/${image}`}
@@ -61,7 +61,7 @@ function ProductItem(item) {
         </Card.Body>
         
         <Card.Footer>
-          <Button onClick={addToCart}>Add to cart</Button>
+          <Button className="button-class" onClick={addToCart}>Add to cart</Button>
         </Card.Footer>
       </Card>
     </Col>
