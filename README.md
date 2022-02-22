@@ -35,9 +35,13 @@ Your group will use everything you’ve learned throughout this course to create
 
 * Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
+
+
 ## Project Link
 
 This project is called as AJ's-Boutique. To view the live webpage, please [click here](https://ajs-boutique-final.herokuapp.com/)
+
+
 
 # Table of Contents
 
