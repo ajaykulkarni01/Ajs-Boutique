@@ -1,81 +1,104 @@
-# Final Project Starter
+# 23 Final Project: MERN Stack Single-Page Application 
+# Project : AJ's - Boutique
 
-This repository is here to work as a basis for your final project
+![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)
 
-## Installation and Setup
+This is the final project of the bootcamp. Working individually we were tasked to build a MERN Stack Single-Page Application of our choice. 
 
-Install the npm dependencies
-````
-npm install
-````
+We were given the following requirement.
 
-Setting up environment variables
-1. Rename .env.EXAMPLE -> .env in the server folder
-2. Update the jwt secret to a random value. This will be used to sign your json web tokens. If someone else knows what this is they will be able to login as anyone!
+## Project Requirements
 
-Rename the following files/folders to your application name
-- The name property in package.json, client/package.json and server/package.json
-- The root folder name
-- In server/config/connection.js change the url database name to something that makes sense for your app. e.g. "mongodb://localhost/meal-tracker-db"
-- In client/public/index.html update the \<title> and \<meta> tags to give your site a proper title and description
+Your group will use everything you’ve learned throughout this course to create a MERN stack single-page application that works with real-world data to solve a real-world challenge, with a focus on data and user demand. This project will provide you with the best opportunity to demonstrate your problem-solving skills, which employers will want to see during interviews. Once again, the user story and acceptance criteria will depend on the project that you create, but your project must fulfill the following requirements:
 
-Change the user seeds if you wish.
+* Use React for the front end.
 
-## Running the application
+* Use GraphQL with a Node.js and Express.js server.
 
-If this is the first time running and you would like some test data, seeds can be run with:
-````
-npm run seed
-````
+* Use MongoDB and the Mongoose ODM for the database.
 
-To start in develop mode:
-````
-npm run develop
-````
-This will start both the front-end and backend in watch mode
+* Use queries and mutations for retrieving, adding, updating, and deleting data.
 
-To start the services independently:
-Front end:
-````
-cd client && npm start
-````
+* Be deployed using Heroku (with data).
 
-Back end:
-````
-cd server && npm watch
-````
+* Have a polished UI.
+
+* Be responsive.
+
+* Be interactive (i.e., accept and respond to user input).
+
+* Include authentication (JWT).
+
+* Protect sensitive API key information on the server.
+
+* Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, etc.).
+
+* Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
+
+## Project Link
+
+This project is called as AJ's-Boutique. To view the live webpage, please [click here](https://ajs-boutique-final.herokuapp.com/)
+
+# Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [License](#license)
+- [Contribute](#contribute)
+
+## Installation
+
+After cloning the gihub repo. Navigate to the root folder and enter <br>
+
+'npm i'
+<br>
+this will allow all the npm dependencies to be installed. 
+
+To populate the data enter <br> 
+'npm run seed' 
+
+<br>
+The last step to complete installation is to input 'npm run develop' in the root directoy. This allows the 'front end and back end' (server and client folders) to run concurrenty. 
+Once this is done a window will automically open displaying the application. 
 
 
-## Deployment
+## Usage
 
-1. When deploying to heroku, make sure that you add the necessary environment variables (JWT_SECRET and MONGODB_URI) to the heroku settings
+The website allows users to either sign up or login. 
+Once logged in they will be able to select various products from following categories: Men, Women, Kids, Baby and New arrivals.
+The Website has separate pages for About and Contact.
+Logged-in users can see their order history details.
+The website uses Stripe payment platform for accepting payments.  
 
-## How to get started
 
-When starting to develop your app, it might be difficult to know where to start. This section should give you an idea of a way to start. This process is only one way to start and there may be a different process that works better for you or your app.
+![home](./client/public/images/home-pg.png)
 
-- Think about what the user experience of your app will be. What screens will you have, what buttons will be on the screens and what actions will they perform. It can be really helpful to sketch out the screens you have on paper or in a program such as figma.
-- Once you know how users will interact with your app, think about what models you will need to integrate with the features of your application. Consider a scenario in which I want to make a todo list app where users are able to add and remove items and mark them as complete. I would need a model for my users, so they're able to login and have specific todos. Users would have properties such as name, email, password etc. I would also need a model for my Todo item, they might have a title, description, completion_status etc. There would also have to be a relation between Todo Items and Users. If you have a complicated model, it might help to draw out your models and how they relate to each other.
-- Once you think you know how your models are going to work, create the appropriate model files in the models folder. These will create the database entities that get stored in the database.
-- Next think about what information you need to retrieve from the database and how users will effect the information. This will inform what queries and mutations you will need to create for graphql. For the todo example, I might need the following queries: 
-    - getMyTodos: a query that returns a list of todo items which you've added.
-    - getMyCompleteTodos: a query that returns all the todos you've completed.
 
-    I also might need the following mutations:
-    - addNewTodo: a mutation that accepts all necessary parameters to create a new todo item
-    - completeTodo: a mutation that takes the id of a todo and marks it as complete.
-    - removeTodo: a mutation that takes the id of a todo and deletes it
-    - addUser: allow users to signup
-    - login: allow users to login and get a token
+## Features
+This application was made up of the following features: 
+- apollo-client
+- bcrypt
+- boostrap
+- concurrently 
+- dotenv
+- express
+- graphQL
+- JWT-decode
+- mongoose
+- node.js
+- nodemon 
+- react
+- react-bootstrap
+- react-dom
+- react-router-dom
+- react-scripts
 
-- Once you know what queries and mutations you will need fill out the typeDefs and then the resolvers. As you add more queries and mutations you should be able to start your server and test the routes as you go in the graphql playground. Start with only a few essential queries and mutations. Other queries and mutations can easily be implemented later.
-- Once your queries and mutations are working it's time to start working on the frontend.
 
-- There are a few different ways you could work on the frontend this is one approach that may work for you.
-- Start in App.js and add the necessary routes with react router that you will need.
-- Build the individual pages paying attention to contain certain UI elements to seperate components where it makes sense.
-- When building a page that may display data from the frontend you could replace the api call with some dummy data while you're working on it and configure the api call later. e.g. if you're working on a list of todo items you could add the below code to the top of your component, then replace it with the actual api call when you are happy with the design.
-````
-const todos = [{id: 123, title: 'todo 1'}, {id: 124, title: 'todo 2'}];
-````
-- Be sure to define the necessary mutations and queries that your app will be using in the utils/mutations and utils/queries folder.
+## License
+
+This project is released under the [ISC LICENSE](https://img.shields.io/badge/License-ISC-blue.svg)
+
+
+## Contribute
+If you would like to contribute to this project please contact me via email at ajaycoolkarni@yahoo.com
