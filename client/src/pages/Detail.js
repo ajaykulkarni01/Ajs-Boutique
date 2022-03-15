@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,16 +13,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 // import Cart from '../components/Cart';
-import { useStoreContext } from '../utils/GlobalState';
+import { useStoreContext } from "../utils/GlobalState";
 import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
   UPDATE_PRODUCTS,
-} from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/queries';
-import { idbPromise } from '../utils/helpers';
-import spinner from '../assets/spinner.gif';
+} from "../utils/actions";
+import { QUERY_PRODUCTS } from "../utils/queries";
+import { idbPromise } from "../utils/helpers";
+import spinner from "../assets/spinner.gif";
 
 function Detail() {
   const [state, dispatch] = useStoreContext();
@@ -48,12 +47,12 @@ function Detail() {
       });
 
       data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
+        idbPromise("products", "put", product);
       });
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('products', 'get').then((indexedProducts) => {
+      idbPromise("products", "get").then((indexedProducts) => {
         dispatch({
           type: UPDATE_PRODUCTS,
           products: indexedProducts,
@@ -70,7 +69,7 @@ function Detail() {
         _id: id,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
       });
-      idbPromise('cart', 'put', {
+      idbPromise("cart", "put", {
         ...itemInCart,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
       });
@@ -79,7 +78,7 @@ function Detail() {
         type: ADD_TO_CART,
         product: { ...currentProduct, purchaseQuantity: 1 },
       });
-      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: 1 });
     }
   };
 
@@ -89,176 +88,210 @@ function Detail() {
       _id: currentProduct._id,
     });
 
-    idbPromise('cart', 'delete', { ...currentProduct });
+    idbPromise("cart", "delete", { ...currentProduct });
   };
 
   return (
     <>
       {currentProduct && cart ? (
+        
         <div className="container-fluid mt-3">
-        <div className="row">
-          <div className="col-md-12">
-            <div className="row mb-3">
-              <div className="col-md-5 text-center">
-                <img
-                  src={`/images/${currentProduct.image}`}
-                  alt={currentProduct.name}
-                  className="img-fluid mb-3"
-                  
-                />
-                
-              </div>
-              <div className="col-md-7">
-                <h1 className="h5 d-inline mr-2">
-                {currentProduct.name}
-                </h1>
-
-                <div className="mb-3">
-                  <FontAwesomeIcon icon={faStar} className="text-warning mr-1" />
-                  <FontAwesomeIcon icon={faStar} className="text-warning mr-1" />
-                  <FontAwesomeIcon icon={faStar} className="text-warning mr-1" />
-                  <FontAwesomeIcon icon={faStar} className="text-warning mr-1" />
-                  <FontAwesomeIcon icon={faStar} className="text-secondary mr-1" />|{" "}
-                  <span className="text-muted small">
-                    42 ratings and 4 reviews
-                  </span>
+          <br/><br/>
+          <div className="row">
+          
+            <div className="col-md-12">
+            
+              <div className="row mb-3">
+                <div className="col-md-5 text-center">
+                  <img
+                    src={`/images/${currentProduct.image}`}
+                    alt={currentProduct.name}
+                    className="img-fluid mb-3"
+                  />
                 </div>
-                <dl className="row small mb-3">
-                  <dt className="col-sm-3">Availability</dt>
-                  <dd className="col-sm-9">In stock</dd>
-                  <dt className="col-sm-3">Sold by</dt>
-                  <dd className="col-sm-9">Authorised Store</dd>
-                  <dt className="col-sm-3">Size</dt>
-                  <dd className="col-sm-9">
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="size"
-                        id="sizes"
-                        disabled
-                      />
-                      <label className="form-check-label" htmlFor="sizes">
-                        S
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="size"
-                        id="sizem"
-                        disabled
-                      />
-                      <label className="form-check-label" htmlFor="sizem">
-                        M
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="size"
-                        id="sizel"
-                      />
-                      <label className="form-check-label" htmlFor="sizel">
-                        L
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="size"
-                        id="sizexl"
-                      />
-                      <label className="form-check-label" htmlFor="sizexl">
-                        XL
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="size"
-                        id="sizexxl"
-                      />
-                      <label className="form-check-label" htmlFor="sizexxl">
-                        XXL
-                      </label>
-                    </div>
-                  </dd>
-                  <dt className="col-sm-3">Color</dt>
-                  <dd className="col-sm-9">
-                    <button className="btn btn-sm btn-primary p-2 mx-1"> </button>
-                    <button className="btn btn-sm btn-secondary p-2 mx-1"> </button>
-                    <button className="btn btn-sm btn-success p-2 mx-1"> </button>
-                    <button className="btn btn-sm btn-danger p-2 mx-1"> </button>
-                    <button className="btn btn-sm btn-warning p-2 mx-1"> </button>
-                    <button className="btn btn-sm btn-info p-2 mx-1"> </button>
-                    <button className="btn btn-sm btn-dark p-2 mx-1"> </button>
-                  </dd>
-                </dl>
+                <div className="col-md-7">
+                  <h1 className="h5 d-inline mr-2">{currentProduct.name}</h1>
 
-                <div className="mb-3">
-                  <span className="font-weight-bold h5 mr-2">${currentProduct.price}{' '}</span>
-                </div>
-                <div className="mb-3 w-50">
-                  <div className="d-inline float-left mr-2">
-                    <div className="input-group input-group-sm mw-140">
-                      <button
-                        className="btn btn-primary text-white button-class"
-                        type="button"
-                      >
-                        <FontAwesomeIcon icon={faMinus} />
-                      </button>
-                      <input
-                        type="text"
-                        className="form-control w-25"
-                        defaultValue="1"
-                      />
-                      <button
-                        className="btn btn-primary text-white button-class"
-                        type="button"
-                      >
-                        <FontAwesomeIcon icon={faPlus} />
-                      </button>
-                    </div>
+                  <div className="mb-3">
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      className="text-warning mr-1"
+                    />
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      className="text-warning mr-1"
+                    />
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      className="text-warning mr-1"
+                    />
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      className="text-warning mr-1"
+                    />
+                    <FontAwesomeIcon
+                      icon={faStar}
+                      className="text-secondary mr-1"
+                    />
+                    |{" "}
+                    <span className="text-muted small">
+                      42 ratings and 4 reviews
+                    </span>
                   </div>
-                  <button onClick={addToCart}
-                    type="button"
-                    className="btn btn-sm btn-primary mr-2 my-2 button-class"
-                    title="Add to cart"
-                  >
-                    <FontAwesomeIcon icon={faCartPlus} /> Add to cart
-                  </button>
-                  <button disabled={!cart.find((p) => p._id === currentProduct._id)}
-              onClick={removeFromCart}
-                    type="button"
-                    className="btn btn-sm btn-warning mx-2 my-2"
-                    title="Remove"
-                  >
-                    <FontAwesomeIcon icon={faShoppingCart} /> Remove from cart
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-sm btn-outline-secondary"
-                    title="Add to wishlist"
-                  >
-                    <FontAwesomeIcon icon={faHeart} />
-                  </button>
-                </div>
-                <div>
-                  <dt className="font-weight-600 mb-2">
-                    Product Description
-                  </dt>
-                  <p>{currentProduct.description}</p>
+                  <dl className="row small mb-3">
+                    <dt className="col-sm-3">Availability</dt>
+                    <dd className="col-sm-9">In stock</dd>
+                    <dt className="col-sm-3">Sold by</dt>
+                    <dd className="col-sm-9">Authorised Store</dd>
+                    <dt className="col-sm-3">Size</dt>
+                    <dd className="col-sm-9">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="size"
+                          id="sizes"
+                          disabled
+                        />
+                        <label className="form-check-label" htmlFor="sizes">
+                          S
+                        </label>
+                      </div>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="size"
+                          id="sizem"
+                          disabled
+                        />
+                        <label className="form-check-label" htmlFor="sizem">
+                          M
+                        </label>
+                      </div>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="size"
+                          id="sizel"
+                        />
+                        <label className="form-check-label" htmlFor="sizel">
+                          L
+                        </label>
+                      </div>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="size"
+                          id="sizexl"
+                        />
+                        <label className="form-check-label" htmlFor="sizexl">
+                          XL
+                        </label>
+                      </div>
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="size"
+                          id="sizexxl"
+                        />
+                        <label className="form-check-label" htmlFor="sizexxl">
+                          XXL
+                        </label>
+                      </div>
+                    </dd>
+                    <dt className="col-sm-3">Color</dt>
+                    <dd className="col-sm-9">
+                      <button className="btn btn-sm btn-primary p-2 mx-1">
+                        {" "}
+                      </button>
+                      <button className="btn btn-sm btn-secondary p-2 mx-1">
+                        {" "}
+                      </button>
+                      <button className="btn btn-sm btn-success p-2 mx-1">
+                        {" "}
+                      </button>
+                      <button className="btn btn-sm btn-danger p-2 mx-1">
+                        {" "}
+                      </button>
+                      <button className="btn btn-sm btn-warning p-2 mx-1">
+                        {" "}
+                      </button>
+                      <button className="btn btn-sm btn-info p-2 mx-1">
+                        {" "}
+                      </button>
+                      <button className="btn btn-sm btn-dark p-2 mx-1">
+                        {" "}
+                      </button>
+                    </dd>
+                  </dl>
+
+                  <div className="mb-3">
+                    <span className="font-weight-bold h5 mr-2">
+                      ${currentProduct.price}{" "}
+                    </span>
+                  </div>
+                  <div className="mb-3 w-50">
+                    <div className="d-inline float-left mr-2">
+                      <div className="input-group input-group-sm mw-140">
+                        <button
+                          className="btn btn-primary text-white button-class"
+                          type="button"
+                        >
+                          <FontAwesomeIcon icon={faMinus} />
+                        </button>
+                        <input
+                          type="text"
+                          className="form-control w-25"
+                          defaultValue="1"
+                        />
+                        <button
+                          className="btn btn-primary text-white button-class"
+                          type="button"
+                        >
+                          <FontAwesomeIcon icon={faPlus} />
+                        </button>
+                      </div>
+                    </div>
+                    <button
+                      onClick={addToCart}
+                      type="button"
+                      className="btn btn-sm btn-primary mr-2 my-2 button-class"
+                      title="Add to cart"
+                    >
+                      <FontAwesomeIcon icon={faCartPlus} /> Add to cart
+                    </button>
+                    <button
+                      disabled={!cart.find((p) => p._id === currentProduct._id)}
+                      onClick={removeFromCart}
+                      type="button"
+                      className="btn btn-sm btn-warning mx-2 my-2"
+                      title="Remove"
+                    >
+                      <FontAwesomeIcon icon={faShoppingCart} /> Remove from cart
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-sm btn-outline-secondary"
+                      title="Add to wishlist"
+                    >
+                      <FontAwesomeIcon icon={faHeart} />
+                    </button>
+                  </div>
+                  <div>
+                    <dt className="font-weight-600 mb-2">
+                      Product Description
+                    </dt>
+                    <p>{currentProduct.description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                {/* <nav>
+              <div className="row">
+                <div className="col-md-12">
+                  {/* <nav>
                   <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a
                       className="nav-link active"
@@ -317,7 +350,7 @@ function Detail() {
                     </a>
                   </div>
                 </nav> */}
-                {/* <div className="tab-content p-3 small" id="nav-tabContent">
+                  {/* <div className="tab-content p-3 small" id="nav-tabContent">
                   <div
                     className="tab-pane fade show active"
                     id="nav-details"
@@ -365,18 +398,19 @@ function Detail() {
                     <SizeChart />
                   </div>
                 </div> */}
+                </div>
               </div>
             </div>
-          </div>
-          {/* <div className="col-md-4">
+            {/* <div className="col-md-4">
             <CardFeaturedProduct data={data.products} />
             <CardServices />
           </div> */}
+          </div>
         </div>
-      </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
       {/* <Cart /> */}
+      <br/><br/>
     </>
   );
 }
